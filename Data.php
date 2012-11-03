@@ -16,10 +16,15 @@ class Data
 	/*
 		User Info
 	*/
-	private $userName;
-	private $numSlideshows;
+	private $username;
+	private $name;
+	private $profileLink;
+	private $userPicture;
+	private $presentationCount;
 	private $slideshows = array(); 
 	private $totalViewCount;
+	private $totalNumComments;
+	private $averageViewCount;
 
 	/*
 		Constructor takes in the username 
@@ -28,6 +33,7 @@ class Data
 	function __construct($username)
 	{
 		//Get the data
+		$this->username = $username;
 		$this->getData($username);
 		$this->analyzeData();
 	}
@@ -68,13 +74,24 @@ class Data
 		$xml = simplexml_load_string($this->data);
 
 		//Parse the document according to the analyzed structure
-		$this->userName = $xml->Name;
-		$this->numSlideshows = $xml->Count;
+		$this->name = $xml->Name;
+
+		//Profile page
+		$this->profileLink ="http://www.slideshare.com/". $this->username;
+
+		//User profile picture
+		$this->userPicture = "http://cdn.slidesharecdn.com/profile-photo-".$this->username."-96x96.jpg";
+
+		//Number of Presentations
+		$this->presentationCount = (double) $xml->Count;
 
 		//Get Slideshows, create objects, add
 		foreach($xml->xpath('Slideshow') as $slideshowXML)
 			array_push($this->slideshows, new Slideshow($slideshowXML));		
 
+		//Sort Slideshows (according to views)
+		usort($this->slideshows, array($this, 'slideshowViewCountCmp'));
+		
 		//Count Stuff
 		$this->aggregateStatistics();
 	}
@@ -86,26 +103,84 @@ class Data
 	{
 		//Total Number of Views
 		$this->totalViewCount = 0;
+
+		//Total Number of Comments
+		$this->totalNumComments = 0;
+
+		//Count
 		foreach($this->slideshows as $slideshow)
+		{
 			$this->totalViewCount += $slideshow->numViews();	
+			$this->totalNumComments += $slideshow->numComments();
+		}
+
+		//Average
+		if($this->presentationCount == 0)
+			$this->averageViewCount = 0;
+		else
+			$this->averageViewCount = $this->totalViewCount / $this->presentationCount;
+
+		//Number Format
+		$this->presentationCount = $this->formatNumber($this->presentationCount);
+		$this->totalViewCount = $this->formatNumber($this->totalViewCount);
+		$this->totalNumComments = $this->formatNumber($this->totalNumComments);
+		$this->averageViewCount = $this->formatNumber($this->averageViewCount);
 	}
 
+	//Sorts according to the view count of the slideshow (in decreasing order) 
+	private function slideshowViewCountCmp($a, $b)
+	{
+		if($a->numViews() == $b->numViews()) return 0;
+		if($a->numViews() > $b->numViews()) return -1;
+		return 1;
+	}
+
+	private function debugViewCount()
+	{
+		foreach($this->slideshows as $slideshow)
+			echo "-".$slideshow->numViews()."-";
+	}
+
+	//formats all numbers to have commas every 3 digits
+	private function formatNumber($number)
+	{
+		$NUM_DECIMAL_PLACES = 2;
+		return number_format($number);
+	}
 	/*
 		Getter Methods
 	*/
 	public function name()
 	{
-		return $this->userName;
+		return $this->name;
 	}
-
+	public function profileLink()
+	{
+		return $this->profileLink;
+	}
+	public function picture()
+	{
+		return $this->userPicture;
+	}
+	public function presentationCount()
+	{
+		return $this->presentationCount;
+	}
+	public function slideshows()
+	{
+		return $this->slideshows;
+	}
 	public function totalViewCount()
 	{
 		return $this->totalViewCount;	
 	}
-
-	public function slideshows()
+	public function totalNumComments()
 	{
-		return $this->slideshows;
+		return $this->totalNumComments;
+	}
+	public function averageViewCount()
+	{
+		return $this->averageViewCount;
 	}
 }
 

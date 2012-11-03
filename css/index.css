@@ -1,0 +1,140 @@
+ 
+/*
+  index.css
+*/
+
+.spacer
+{
+  height:30px;
+}
+/* Profile picture */
+.search
+{
+  position:relative;
+  float:right;
+  top:76px;
+}
+.overview 
+{
+  height: 140px;
+}
+
+.picture
+{
+  float:left;
+}
+.profileInfo
+{
+  float:left;
+  margin-left:24px;
+  margin-top:18px;
+}
+
+/* Statistic Square */
+.box .number
+{
+  font-size:36px;
+  line-height:normal;
+  font-weight:bold;
+
+}
+.box .statistic
+{
+  float:left;
+}
+
+.statistics
+{
+  margin-bottom:40px;
+}
+
+/* Details Separator */
+.details .page-header
+{
+  padding-bottom:2px;
+  margin-bottom:24px;
+}
+/* Presentation */
+.presentation{
+  float:left;
+  margin-bottom:30px;
+  clear:both;
+  width:100%;
+}
+.presentation:hover
+{
+  /*background-color:#999;*/
+}
+.presentation .image
+{
+  float:left;
+  margin-right:24px;
+}
+.presentationInfo
+{
+  float:left;
+  padding-top:4px;
+}
+.presentationInfo .title
+{
+  font-size:18px;
+  font-weight:bold;
+  text-rendering:optimizelegibility;
+  color:#333;
+  line-height:normal;
+}
+.presentationInfo .number
+{
+  font-weight:bold;
+  color:#333;
+}
+
+.presentationInfo .date
+{
+  margin-bottom:14px;
+}
+
+
+
+/*  Footer */
+.container .credit {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+ /* Sticky footer styles
+  -------------------------------------------------- */
+
+  html,
+  body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+  }
+
+  /* Wrapper for page content to push down footer */
+  #wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+  }
+
+  /* Set the fixed height of the footer here */
+  #push,
+  #footer {
+    height: 60px;
+  }
+  #footer {
+    background-color: #f5f5f5;
+  }
+
+  /* Lastly, apply responsive CSS fixes as necessary */
+  @media (max-width: 767px) {
+    #footer {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
