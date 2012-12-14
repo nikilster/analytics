@@ -5,7 +5,7 @@
 	*/
 	class ApiConstants
 	{	
-		static $API_KEY = "tAkwxgge";
-		static $API_SECRET ="w8MhqMKY";
+		static $API_KEY = "TBgkfmZ8";//"tAkwxgge";
+		static $API_SECRET = "PLO7e4It";//"w8MhqMKY";
 	}
 ?>
