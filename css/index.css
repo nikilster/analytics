@@ -47,6 +47,10 @@
   margin-bottom:40px;
 }
 
+
+.users {
+  margin-bottom:20px;
+}
 /* Table */
 
 thead tr
@@ -65,6 +69,7 @@ thead tr
 .table td {
   width:27%;
 }
+
 
 /* Details Separator */
 .details .page-header
