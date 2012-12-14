@@ -1,23 +1,19 @@
 <?php
 
- include_once('Data.php');
+ include_once('classes/Helper.php');
+ include_once('classes/Data.php');
 
  $USERNAME_KEY = 'u';
 
- //check
- if(!array_key_exists($USERNAME_KEY,$_GET) || $_GET[$USERNAME_KEY] === "")
+ if(!Helper::checkQueryParameter($USERNAME_KEY))
  {
- 	echo "Please enter a user to show statistics!";
+ 	echo "Please enter a valid user id!";
  	exit();
  }
 
- $username = $_GET[$USERNAME_KEY];
+ $username = Helper::getQueryParameter($USERNAME_KEY);
  $userData = new Data($username);
 
- function formatNumber($number)
- {
- 	return number_format($number);
- }
 
  //Debug
  if($DEBUG)

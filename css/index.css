@@ -2,7 +2,6 @@
 /*
   index.css
 */
-
 .spacer
 {
   height:30px;
@@ -46,6 +45,25 @@
 .statistics
 {
   margin-bottom:40px;
+}
+
+/* Table */
+
+thead tr
+{
+  background-color:#F5F5F5;
+}
+
+.table td.username {
+  width:15%;
+}
+.table th,
+.table td {
+   text-align:center;
+}
+
+.table td {
+  width:27%;
 }
 
 /* Details Separator */
