@@ -1,163 +1,74 @@
- 
-/*
-  index.css
-*/
-.spacer
+#heading
 {
-  height:30px;
+	margin-top:40px;
+	font-size:80px;
+	line-height:70px;
+	text-align:center;
 }
-/* Profile picture */
-.search
+
+#tagline
 {
-  position:relative;
-  float:right;
-  top:76px;
+	text-align:center;
+	color:#999;
 }
-.overview 
+
+
+#browse
 {
-  height: 140px;
+ 	margin:auto;
+ 	width:500px;
+ 	margin-top:60px;
+
+ 	font-size:24px;
+ 	line-height:normal;
 }
 
-.picture
+#browse a
 {
-  float:left;
+	margin-left:40px;
+	font-weight:bold;
 }
-.profileInfo
+
+#userForm
 {
-  float:left;
-  margin-left:24px;
-  margin-top:18px;
+	position:relative;
+	margin:auto;
+	margin-top:70px;
+	width:500px;
+	font-weight:bold;
 }
 
-/* Statistic Square */
-.box .number
+/* Input Text */
+input#username
 {
-  font-size:36px;
-  line-height:normal;
-  font-weight:bold;
-
+	height:40px;
+	width:400px;
+	font-size:24px;
 }
-.box .statistic
+
+/* Submit Button */
+button#submitButton
 {
-  float:left;
+	height:50px;	
+	font-size:24px;
 }
 
-.statistics
+/*  Placeholder Text */
+input:-moz-placeholder
+{	
+	padding-top:5px;
+	color:#999;
+}
+
+input:-ms-input-placeholder
 {
-  margin-bottom:20px;
+	padding-top:5px;
+	color:#999;
 }
 
-
-.users {
-  margin-bottom:20px;
-}
-/* Table */
-
-thead tr
+input::-webkit-input-placeholder
 {
-  background-color:#F5F5F5;
+	padding-top:5px;
+	color:#999;
 }
 
-.table td.username {
-  width:15%;
-}
-.table th,
-.table td {
-   text-align:center;
-}
-
-.table td {
-  width:27%;
-}
-
-
-/* Details Separator */
-.details .page-header
-{
-  padding-bottom:2px;
-  margin-bottom:24px;
-}
-/* Presentation */
-.presentation{
-  float:left;
-  margin-bottom:30px;
-  clear:both;
-  width:100%;
-}
-.presentation:hover
-{
-  /*background-color:#999;*/
-}
-.presentation .image
-{
-  float:left;
-  margin-right:24px;
-}
-.presentationInfo
-{
-  float:left;
-  padding-top:4px;
-}
-.presentationInfo .title
-{
-  font-size:18px;
-  font-weight:bold;
-  text-rendering:optimizelegibility;
-  color:#333;
-  line-height:normal;
-}
-.presentationInfo .number
-{
-  font-weight:bold;
-  color:#333;
-}
-
-.presentationInfo .date
-{
-  margin-bottom:14px;
-}
-
-
-
-/*  Footer */
-.container .credit {
-      text-align: center;
-      margin: 20px 0;
-    }
-
- /* Sticky footer styles
-  -------------------------------------------------- */
-
-  html,
-  body {
-    height: 100%;
-    /* The html and body elements cannot have any padding or margin. */
-  }
-
-  /* Wrapper for page content to push down footer */
-  #wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    /* Negative indent footer by it's height */
-    margin: 0 auto -60px;
-  }
-
-  /* Set the fixed height of the footer here */
-  #push,
-  #footer {
-    height: 60px;
-  }
-  #footer {
-    background-color: #f5f5f5;
-  }
-
-  /* Lastly, apply responsive CSS fixes as necessary */
-  @media (max-width: 767px) {
-    #footer {
-      margin-left: -20px;
-      margin-right: -20px;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-  }

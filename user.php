@@ -1,10 +1,10 @@
 <?php
-  include('groupDashboard.php');
+  include('userDashboard.php');
 ?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title><?php echo $groupData->name();?>'s Analytics</title>
+    <title><?php echo $userData->name();?>'s Analytics</title>
   
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -45,59 +45,36 @@
 
        <div class="overview">
          <div class="picture">
-           <a href="#" target="_BLANK" class="thumbnail">
-            <img id="profilePicture" src="<?php echo $groupData->picture();?>" alt="Profile Picture"/>
+           <a href="<?php echo $userData->profileLink();?>" target="_BLANK" class="thumbnail">
+            <img id="profilePicture" src="<?php echo $userData->picture();?>" alt="Profile Picture"/>
            </a>
          </div>
 
          <div class="profileInfo">
          		<h1><?php 
                 //TODO: get the real name!
-                echo $groupData->name();
+                echo $userData->name();
                 ?></h1>
          </div>
        </div>
 
        <div class="statistics row-fluid">
         <div class="box well span3">
-          <div class="number"><?php echo Helper::formatNumber($groupData->totalViewCount());?></div>
+          <div class="number"><?php echo Helper::formatNumber($userData->totalViewCount());?></div>
           <div class="statistic muted">Total Views</div>
         </div>
         <div class="box well span3">
-          <div class="number"><?php echo Helper::formatNumber($groupData->presentationCount());?></div>
+          <div class="number"><?php echo Helper::formatNumber($userData->presentationCount());?></div>
           <div class="statistic muted">Presentations</div>
         </div>
         <div class="box well span3">
-          <div class="number"><?php echo Helper::formatNumber($groupData->totalCommentCount());?></div>
+          <div class="number"><?php echo Helper::formatNumber($userData->totalNumComments());?></div>
           <div class="statistic muted">Comments</div>
         </div>
         <div class="box well span3">
-          <div class="number"><?php echo count($groupData->usernames());?></div>
-          <div class="statistic muted">Members</div>
+          <div class="number"><?php echo Helper::formatNumber($userData->averageViewCount());?></div>
+          <div class="statistic muted">Average Views / Pres</div>
         </div>
-       </div>
-
-       <div class="users row-fluid">
-         <table class="table table-bordered table-hover">
-          <thead>
-            <tr >
-              <th>Username</th>
-              <th>Total Views</th>
-              <th>Total Presentations</th>
-              <th>Average Views / Presentation</th>
-            </tr>
-          </thead>
-
-          <?php foreach($groupData->users() as $user) {?>
-          <tr>
-            <td class="username"><a href="user.php?u=<?php echo $user->name;?>" target='_BLANK'><?php echo $user->name();?></a></td>
-            <td><?php echo Helper::formatNumber($user->totalViewCount());?></td>
-            <td><?php echo Helper::formatNumber($user->presentationCount());?></td>
-            <td><?php echo Helper::formatNumber($user->averageViewCount());?></td>
-          </tr>
-          <?php }?>
-
-         </table>
        </div>
 
        <div class="details">
@@ -108,7 +85,7 @@
          <?php 
 
          //Display the presentations
-         foreach($groupData->slideshows() as $slideshow) {
+         foreach($userData->slideshows() as $slideshow) {
          ?>
          
 
@@ -122,7 +99,6 @@
 
             <div class="presentationInfo">
               <div class="title"><?php echo $slideshow->title();?></div>
-              <div class="creator"><a href="<?php echo $slideshow->userProfileLink();?>" target="_BLANK"><?php echo $slideshow->username();?></a></div>
               <div class="date"><?php echo $slideshow->createdDate();?></div>
               <div class="views"><span class="number"><?php echo Helper::formatNumber($slideshow->numViews());?></span> Views</div>
               <div class="favorites"><span class="number"><?php echo Helper::formatNumber($slideshow->numFavorites());?></span> Favorites</div>

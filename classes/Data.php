@@ -201,6 +201,8 @@ class Data
 	/*
 		Getter Methods
 	*/
+		
+	//Pretty sure this is same as username
 	public function name()
 	{
 		return $this->name;

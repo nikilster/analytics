@@ -48,7 +48,7 @@ function goToUser()
 	//Handle better
 	if(username != "")
 	{
-		var newUrl = "index.php?u=" +username;
+		var newUrl = "user.php?u=" +username;
 		window.location.href = newUrl; 
 	}
 
