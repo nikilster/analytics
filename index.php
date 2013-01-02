@@ -39,7 +39,7 @@
           See some example dashboards: <br/> <br/>
           <a href="user.php?u=bjfogg">BJ Fogg </a> <br/>
           <a href="user.php?u=nikilster">Nikil Viswanathan</a> <br/>
-          <a href="user.php?u=maditabalnco">maditabalnco</a> <br/>
+          <a href="user.php?u=valentino_crawford">Valentino Crawford</a> <br/>
           <br/>
           or jump to a specific person
         </div>
